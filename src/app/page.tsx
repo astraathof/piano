@@ -1,7 +1,5 @@
 import TestChatBot from '@/components/TestChatBot'
 import CopyButton from '@/components/CopyButton'
-import Image from 'next/image'
-
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-100">
@@ -22,16 +20,12 @@ export default function Home() {
             Dit is een template om met Bolt te werken waarbij we gebruik maken van Gemini. Dit template is gemaakt door Tom Naberink
           </p>
 
-          {/* AI voor Docenten Logo */}
+          {/* Logo placeholder */}
           <div className="flex justify-center mb-8">
-            <div className="bg-white rounded-lg shadow-lg p-4">
-              <Image 
-                src="/images/ai-voor-docenten-logo.png" 
-                alt="AI voor Docenten Logo" 
-                width={192} 
-                height={96}
-                className="rounded-lg"
-              />
+            <div className="bg-white rounded-lg shadow-lg p-6">
+              <div className="w-48 h-24 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-xl">🤖 AI Template</span>
+              </div>
             </div>
           </div>
         </div>

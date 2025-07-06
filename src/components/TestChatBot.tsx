@@ -808,7 +808,7 @@ export default function TestChatBot() {
         {/* AI Model Selection Cards */}
         <div className="bg-white rounded-lg border border-gray-200 p-4 mb-4">
           <h3 className="text-gray-800 font-medium mb-3">
-            Kies AI Model
+            🤖 Kies AI Model
           </h3>
           
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -915,8 +915,6 @@ export default function TestChatBot() {
               </div>
             </div>
           </div>
-
-
         </div>
 
         {/* Input Area */}
