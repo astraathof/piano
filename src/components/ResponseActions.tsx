@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { Document, Paragraph, TextRun } from 'docx'
 import GeminiTTS, { GEMINI_VOICES, EMOTION_STYLES } from './GeminiTTS'
 
 interface ResponseActionsProps {
@@ -140,9 +139,12 @@ export default function ResponseActions({
   }
 
   // Advanced markdown to Word document converter
-  const convertMarkdownToWordDocument = (markdown: string): Document => {
+  const convertMarkdownToWordDocument = async (markdown: string) => {
+    // Dynamically import docx modules to avoid SSR issues
+    const { Document, Paragraph, TextRun } = await import('docx')
+    
     const lines = markdown.split('\n')
-    const paragraphs: Paragraph[] = []
+    const paragraphs: any[] = []
     let currentBulletList: string[] = []
     let currentNumberedList: Array<{number: string, text: string}> = []
     let isInCodeBlock = false
@@ -241,8 +243,8 @@ export default function ResponseActions({
     }
 
     // Parse inline formatting (bold, italic, code, links, strikethrough)
-    const parseInlineFormatting = (text: string): TextRun[] => {
-      const runs: TextRun[] = []
+    const parseInlineFormatting = (text: string): any[] => {
+      const runs: any[] = []
       
       // Enhanced regex to handle complex combinations
       const regex = /(\*\*\*[^*]+\*\*\*|\*\*[^*]+\*\*|\*[^*]+\*|___[^_]+___|__[^_]+__|_[^_]+_|`[^`]+`|~~[^~]+~~|\[([^\]]+)\]\(([^)]+)\))/g
@@ -483,7 +485,7 @@ export default function ResponseActions({
       // Import Packer dynamically to avoid SSR issues
       const { Packer } = await import('docx')
       
-      const doc = convertMarkdownToWordDocument(content)
+      const doc = await convertMarkdownToWordDocument(content)
       const blob = await Packer.toBlob(doc)
       
       // Create download link
