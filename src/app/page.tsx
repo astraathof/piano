@@ -1,5 +1,9 @@
 import TestChatBot from '@/components/TestChatBot'
-import CopyButton from '@/components/CopyButton'
+import dynamic from 'next/dynamic'
+
+const CopyButton = dynamic(() => import('@/components/CopyButton'), {
+  ssr: false
+})
 
 export default function Home() {
   return (
