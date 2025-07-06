@@ -1,5 +1,5 @@
 import TestChatBot from '@/components/TestChatBot'
-import CopyButton from '@/components/CopyButton'
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-100">
@@ -58,11 +58,13 @@ export default function Home() {
                 <div className="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-gray-400">GitHub Repository URL</span>
-                    <CopyButton 
-                      text="https://github.com/TomNaberink/apitemplateTom"
+                    <button 
+                      onClick={() => navigator.clipboard.writeText("https://github.com/TomNaberink/apitemplateTom")}
                       className="text-purple-400 hover:text-purple-300 text-xs transition-colors"
                       title="Kopieer GitHub URL"
-                    />
+                    >
+                      📋 Kopieer
+                    </button>
                   </div>
                   <code>https://github.com/TomNaberink/apitemplateTom</code>
                 </div>
@@ -88,11 +90,13 @@ export default function Home() {
                 </p>
                 <div className="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm">
                   <div className="flex items-center justify-end mb-2">
-                    <CopyButton 
-                      text="GEMINI_API_KEY=your_actual_api_key_here"
+                    <button 
+                      onClick={() => navigator.clipboard.writeText("GEMINI_API_KEY=your_actual_api_key_here")}
                       className="text-purple-400 hover:text-purple-300 text-xs transition-colors"
                       title="Kopieer .env.local inhoud"
-                    />
+                    >
+                      📋 Kopieer
+                    </button>
                   </div>
                   <code>GEMINI_API_KEY=your_actual_api_key_here</code>
                 </div>
