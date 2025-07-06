@@ -7,6 +7,12 @@ const CopyButton = dynamic(() => import('@/components/CopyButton'), {
 const TestChatBot = dynamic(() => import('@/components/TestChatBot'), {
   ssr: false
 })
+import dynamic from 'next/dynamic'
+
+// Dynamically import the client component wrapper
+const ClientCopyButtonWrapper = dynamic(() => import('@/components/ClientCopyButtonWrapper'), {
+  ssr: false
+})
 
 export default function Home() {
   return (
@@ -66,13 +72,11 @@ export default function Home() {
                 <div className="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-gray-400">GitHub Repository URL</span>
-                    <CopyButton 
+                    <ClientCopyButtonWrapper
                       text="https://github.com/TomNaberink/apitemplateTom"
                       className="text-purple-400 hover:text-purple-300 text-xs transition-colors"
+                      title="Kopieer GitHub URL"
                     />
-                  </div>
-                  <code>https://github.com/TomNaberink/apitemplateTom</code>
-                </div>
               </div>
 
               {/* Step 2 - Import from GitHub in Bolt */}
@@ -95,13 +99,11 @@ export default function Home() {
                 </p>
                 <div className="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm">
                   <div className="flex items-center justify-end mb-2">
-                    <CopyButton 
+                    <ClientCopyButtonWrapper
                       text="GEMINI_API_KEY=your_actual_api_key_here"
                       className="text-purple-400 hover:text-purple-300 text-xs transition-colors"
+                      title="Kopieer .env.local inhoud"
                     />
-                  </div>
-                  <code>GEMINI_API_KEY=your_actual_api_key_here</code>
-                </div>
                 <p className="text-orange-600 text-sm mt-2 font-medium">
                   ⚠️ Vervang "your_actual_api_key_here" met je echte API key! (zie stap 3)
                 </p>
